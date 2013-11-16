@@ -1,0 +1,36 @@
+package strike.client.login;
+
+import "role.proto";
+
+// client ==> gate, after authorization.
+message ServerSelectRequest {
+    required uint32 server_id           = 1;
+}
+
+// gate ==> logic, after ServerSelectRequest.
+message UserEnterRequest {
+    required uint32 uid                 = 1;
+}
+
+// logic ==> gate, response to UserEnterRequest.
+message UserEnterResponse {
+    required uint32 session             = 1;
+    repeated game.role.ShowInfo roles   = 2;
+}
+
+// gate ==> client, response for ServerSelectRequest.
+message ServerSelectResponse {
+    required uint32 session             = 1;
+    repeated game.role.ShowInfo roles   = 2;
+}
+
+
+// client ==> gate (+session)==> logic ==> module
+message PlayerLoginRequest {
+    required uint64 guid                = 1;
+}
+
+// client <==(-session) gate <==(+session) logic <== module
+message PlayerLoginResponse {
+    required game.role.SelfInfo role    = 1;
+}

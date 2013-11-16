@@ -1,0 +1,7 @@
+package strike.universal;
+
+// For trivial or error response.
+message Response {
+    // 0, means success.
+    optional int32 error            = 1;
+}

@@ -1,0 +1,17 @@
+package strike.game.role;
+
+message BaseInfo {
+    required uint64 guid            = 1;
+    required string name            = 2;
+    required int32 gender           = 3;
+    required int32 profession       = 4;
+}
+
+message ShowInfo {
+    required BaseInfo base          = 1;
+    optional string address         = 2;    // login machine's internet ip address, empty if this role is logout.
+}
+
+message SelfInfo {
+    required BaseInfo base          = 1;
+}
