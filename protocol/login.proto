@@ -1,4 +1,4 @@
-package strike.client.login;
+package strike.game.login;
 
 import "role.proto";
 
@@ -15,13 +15,13 @@ message UserEnterRequest {
 // logic ==> gate, response to UserEnterRequest.
 message UserEnterResponse {
     required uint32 session             = 1;
-    repeated game.role.ShowInfo roles   = 2;
+    repeated role.ShowInfo roles        = 2;
 }
 
 // gate ==> client, response for ServerSelectRequest.
 message ServerSelectResponse {
     required uint32 session             = 1;
-    repeated game.role.ShowInfo roles   = 2;
+    repeated role.ShowInfo roles        = 2;
 }
 
 
@@ -32,5 +32,5 @@ message PlayerLoginRequest {
 
 // client <==(-session) gate <==(+session) logic <== module
 message PlayerLoginResponse {
-    required game.role.SelfInfo role    = 1;
+    required role.SelfInfo role         = 1;
 }
