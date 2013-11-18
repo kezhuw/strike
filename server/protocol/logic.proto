@@ -1,0 +1,18 @@
+package strike.server.logic;
+
+message BaseInfo {
+    required uint32 id              = 1;
+    required string name            = 2;
+    required uint32 status          = 3;
+    required string address         = 4;
+    required uint32 loadline        = 5;
+    required uint32 threshold       = 6;
+}
+
+message LoadlineNotify {
+    required uint32 loadline        = 1;
+}
+
+message StatusNotify {
+    required uint32 status          = 1;
+}

@@ -1,0 +1,11 @@
+package strike.server.map;
+
+import "logic.proto";
+
+message LogicRegisterRequest {
+    required logic.BaseInfo info        = 1;
+}
+
+message LogicServerListRequest {
+    repeated logic.BaseInfo servers     = 1;
+}
