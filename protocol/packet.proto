@@ -2,9 +2,10 @@ package strike.packet;
 
 // documentation only!
 message Packet {
-    required uint32 length          = 1;
-    optional uint32 checksum        = 2;        // accumulative checksum for client-gate connection
-    optional uint32 sequence        = 3;        // response packet has same `sequence` as request.
+    required uint32 size            = 1;
+
+    optional uint32 session         = 2;        // identify client's entity in logic
+    optional uint32 checksum        = 3;        // accumulative checksum for client-gate connection
 
     // Values of `module` field:
     //
@@ -15,9 +16,12 @@ message Packet {
     //      zero, reserved for gate-logic;
     //      no-zero, client to logic.
     required uint32 module          = 4;
-    required uint32 opcode          = 5;
-    required uint32 optype          = 6;        // request/response/notification
+    required uint32 action          = 5;
+    required uint32 type            = 6;        // request/response/notification(and partial for packaging)
 
-    optional uint32 session         = 7;
+    // only for request/response packet,
+    // response packet has same `sequence` as corresponding request.
+    optional uint32 sequence        = 7;
+
     optional bytes content          = 8;
 }
